@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model clientes {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  admissao           String?
+  agencia            String?
+  bairro             String?
+  banco              String?
+  cargo              String?
+  categoria          String?
+  celular            String?
+  cep                String?
+  cidade             String?
+  comp_end           String?
+  conta              String?
+  cpf                String?
+  created_at         String?
+  data_aposentadoria String?
+  duplicada          String?
+  email              String?
+  endereco           String?
+  est_civil          String?
+  funcao             String?
+  links              String?
+  mae                String?
+  nascimento         String?
+  nome               String?
+  num_end            String?
+  numero_pasta       String?
+  obs                String?
+  org_rg             String?
+  pai                String?
+  pasep              String?
+  pis                String?
+  prontuario         String?
+  recisao            String?
+  rg                 String?
+  sexo               String?
+  telefone           String?
+  uf                 String?
+  uf_rg              String?
+  updated_at         String?
+  user               users?  @relation(fields: [user_id], references: [id])
+  user_id            String? @db.ObjectId
+}
+
+model users {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  github_id  Int
+  avatar_url String
+  login      String
+  clientes   clientes[]
+}

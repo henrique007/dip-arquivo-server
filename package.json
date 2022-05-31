@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/app.js",
-    "build": "rimraf dist && yarn tsc",
+    "build": "rimraf dist && tsc",
     "dev": "ts-node-dev --exit-child src/app.ts"
   },
   "dependencies": {
